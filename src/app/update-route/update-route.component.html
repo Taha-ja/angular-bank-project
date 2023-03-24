@@ -1,0 +1,109 @@
+<div class="flex flex-col items-center w-full mx-auto mt-0">
+  <h3 class="py-8 text-2xl text-center">Update the Customer!</h3>
+  <div class="px-4 py-5 relative sm:px-6">
+    <img *ngIf="image" class="w-36 h-36 mb-3 rounded-full shadow-lg" src="{{image}}" alt=""/>
+    <!-- <img *ngIf="!image" class="w-24 h-24 mb-3 rounded-full shadow-lg" src="../../assets/0080eeaeaa2f2fba77af3e1efeade565.jpg" alt=""/> -->
+    <div *ngIf="!image" class="mx-auto h-36 w-36 rounded-full bg-red-300 flex justify-center items-center" [ngClass]="{'bg-blue-500': updatedCustomer.gender =='Male', 'bg-red-300 ':updatedCustomer.gender =='Female' }">
+      <h1 class="text-5xl">{{firstCharFirstName}}{{firstCharLastName}}</h1>
+    </div>
+    <label for="file"  class="flex items-center absolute cursor-pointer bg-white top-5 right-5 justify-center h-7 w-7 rounded-[50%] ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M12 9c-1.626 0-3 1.374-3 3s1.374 3 3 3 3-1.374 3-3-1.374-3-3-3z"></path><path d="M20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.996.996 0 0 0-.707.293L6.586 5H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-8 12c-2.71 0-5-2.29-5-5s2.29-5 5-5 5 2.29 5 5-2.29 5-5 5z"></path></svg>
+      <input formControlName="file" id="file" type="file" (change)="handleUpload($event)" class="hidden" />
+    </label>
+  </div>
+  <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded md:w-fit w-full" [formGroup]="customerForm" (ngSubmit)="submit()" >
+    <div class="mb-4 md:flex md:justify-between">
+      <div class="mb-4 md:mr-2 md:mb-0">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+          First Name
+        </label>
+        <input
+          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          id="firstName"
+          type="text"
+          placeholder="First Name"
+          formControlName="firstName"
+          [(ngModel)]="updatedCustomer.firstName"
+        />
+        <small class="text-red-500" *ngIf="getControl('firstName')?.hasError('required') && getControl('firstName')?.touched">
+          (*) First name is required
+      </small>
+      </div>
+      <div class="md:ml-2">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+          Last Name
+        </label>
+        <input
+          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          id="lastName"
+          type="text"
+          placeholder="Last Name"
+          formControlName="lastName"
+          [(ngModel)]="updatedCustomer.lastName"
+        />
+        <small class="text-red-500" *ngIf="getControl('lastName')?.hasError('required') && getControl('lastName')?.touched">
+          (*) Last name is required
+      </small>
+      </div>
+    </div>
+        <div class="mb-4 md:w-full mr-2">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+          Email
+        </label>
+        <input
+          class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          id="email"
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [(ngModel)]="updatedCustomer.email"
+        />
+        <small class="text-red-500" *ngIf="getControl('email')?.hasError('required')&& getControl('email')?.touched">(*) Email address is required</small>
+        <small class="text-red-500" *ngIf="getControl('email')?.hasError('email') && getControl('email')?.touched">(*) Email address is invalid</small>
+      </div>
+    <div class="mb-4 md:flex md:justify-between md:gap-4">
+      <div class="md:w-1/2">
+        <label for="gender" class=" block mb-2 text-sm font-bold text-gray-700">Gender</label>
+        <select [(ngModel)]="updatedCustomer.gender" formControlName="gender" name="gender" id="gender" class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow  focus:outline-none focus:shadow-outline">
+          <option [ngValue]="null" disabled>  -- Gender --   </option>
+          <option *ngFor="let gender of genders" [ngValue]="gender">
+            {{gender}}
+          </option>
+        </select>
+      </div>
+
+      <div class="md:w-1/2">
+        <label for="accountType" class=" block mb-2 text-sm font-bold text-gray-700">Account Type</label>
+        <select [(ngModel)]="updatedCustomer.accountType" formControlName="accountType" name="accountType" id="accountType" class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow  focus:outline-none focus:shadow-outline">
+          <option [ngValue]="null" disabled>  -- Account --   </option>
+          <option *ngFor="let accountType of accountTypes" [ngValue]="accountType">
+            {{accountType}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="address">
+        Address
+      </label>
+      <input
+        class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        id="address"
+        type="text"
+        placeholder="Address"
+        formControlName="address"
+        [(ngModel)]="updatedCustomer.address"
+      />
+      <small class="text-red-500" *ngIf="getControl('address')?.hasError('required')&& getControl('address')?.touched">(*) Email address is required</small>
+    </div>
+    <div class="mb-6 text-center">
+      <button
+        class="disabled:cursor-not-allowed cursor-pointer w-1/2 px-4 py-2 font-bold text-white bg-indigo-500 rounded-full hover:bg-indigo-700 focus:outline-none focus:shadow-outline"
+        type="submit"
+        [disabled]="isLoading || !canSubmit()"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,42 @@
+<div class="flex flex-col  md:px-44 md:py-28 p-8">
+  <h2 class="text-center">
+    The number and amount of bank customers can vary depending on factors such as the size of the bank, the types of services offered, and the demographics of the customer base. The number of customers refers to the total count of individuals or businesses with accounts at a bank, while the amount of customers refers to the total value of funds held in these accounts. These metrics are important indicators of a bank's overall success and profitability, and can vary widely between different types of banks and customer bases.
+  </h2>
+  <div class="flex  justify-center items-center md:grid-cols-2 xl:grid-cols-2 gap-6 m-14 flex-wrap ">
+  <div class="w-full max-w-sm mx-auto bg-white border cursor-pointer hover:scale-95 flex justify-center items-center text-center font-bold border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="items-center justify-center  py-10">
+
+      <div><h1>Our Customers</h1></div>
+      <hr>
+      <div class="mt-3 text-slate-500">
+        {{NumberOfCustmers}}
+      </div>
+      <div class="text-gray-400">
+        <i>loyal customer</i>
+
+      </div>
+      <span class="material-symbols-outlined text-blue-400 hover:bg-blue-600 hover:text-white  rounded-full mt-5">
+        verified
+        </span>
+    </div>
+
+  </div>
+  <div  class="w-full max-w-sm mx-auto bg-white border cursor-pointer hover:scale-95 flex justify-center items-center font-bold text-center border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class=" items-center  p-10">
+
+      <div>Total Amount</div>
+      <hr>
+      <div class="mt-3 text-slate-500">{{TotaleBalance |currency }}</div>
+      <div class="text-gray-400">
+        <i>happy customer</i>
+
+      </div>
+      <span class="material-symbols-outlined text-green-400 hover:bg-green-600 hover:text-white rounded-full mt-5">
+        monetization_on
+        </span>
+    </div>
+
+  </div>
+
+  </div>
+</div>
