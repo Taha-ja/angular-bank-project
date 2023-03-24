@@ -28,7 +28,7 @@ export class CustomersService {
   search(name: string): Observable<Customer[]> {
     return this.httpClient.get<Customer[]>(`${API_URL}?q=${name}`);
   }
-  deletePokemon(customer:Customer):Observable<Customer>{
+  deleteCustomer(customer:Customer):Observable<Customer>{
     return this.httpClient.delete<Customer>(`${API_URL}/${customer.id}`);
   }
   createCustomer(customer: Customer): Observable<Customer> {

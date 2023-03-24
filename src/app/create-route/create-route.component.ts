@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
 import { CustomersService } from '../customers.service.';
 import { Customer } from '../models/customer.model';
 import { v4 as uuid } from 'uuid';
@@ -82,7 +81,6 @@ export class CreateRouteComponent {
     return this.customerForm.dirty && this.customerForm.valid;
   }
   handleUpload(event:any){
-    //this.edit=true;
     let file;
     file = event.target.files[0];
     console.log(file)

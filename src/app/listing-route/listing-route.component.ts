@@ -40,7 +40,7 @@ export class ListingRouteComponent implements OnInit {
   }
   delete(customer:Customer){
     this.setIsLoading(customer, true);
-    this.customerService.deletePokemon(customer).subscribe(() => {
+    this.customerService.deleteCustomer(customer).subscribe(() => {
       this.customers = this.customers.filter((c) => c.id !== customer.id);
       this.setIsLoading(customer, false);
     });

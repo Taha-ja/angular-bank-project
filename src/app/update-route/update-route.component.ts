@@ -95,7 +95,6 @@ export class UpdateRouteComponent implements OnInit{
     return (this.customerForm.valid && this.customerForm.dirty) || this.image!=this.updatedCustomer.image;
   }
   handleUpload(event:any){
-    //this.edit=true;
     let file;
     file = event.target.files[0];
     console.log(file)

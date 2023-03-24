@@ -35,12 +35,4 @@ export class NavbarComponent implements OnInit{
   onQuery(event: any) {
     this.searchQuerySubject.next(event.target.value);
   }
-  // private setIsLoading(customer: Customer, isLoading: boolean) {
-  //   this.isDeleteLoading = this.isDeleteLoading.map((p) => {
-  //     if (p.id === customer.id) {
-  //       return { ...p, isLoading };
-  //     }
-  //     return p;
-  //   });
-  // }
 }

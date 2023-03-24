@@ -2,7 +2,6 @@
   <h3 class="py-8 text-2xl text-center">Update the Customer!</h3>
   <div class="px-4 py-5 relative sm:px-6">
     <img *ngIf="image" class="w-36 h-36 mb-3 rounded-full shadow-lg" src="{{image}}" alt=""/>
-    <!-- <img *ngIf="!image" class="w-24 h-24 mb-3 rounded-full shadow-lg" src="../../assets/0080eeaeaa2f2fba77af3e1efeade565.jpg" alt=""/> -->
     <div *ngIf="!image" class="mx-auto h-36 w-36 rounded-full bg-red-300 flex justify-center items-center" [ngClass]="{'bg-blue-500': updatedCustomer.gender =='Male', 'bg-red-300 ':updatedCustomer.gender =='Female' }">
       <h1 class="text-5xl">{{firstCharFirstName}}{{firstCharLastName}}</h1>
     </div>
